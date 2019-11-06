@@ -17,17 +17,17 @@
 
 你不需要考虑数组中超出新长度后面的元素。
 
-# python3
-from typing import Optional 
+    # python3
+    from typing import Optional 
 
-def removeDuplicates(self, nums: List[int]) -> int:
-    count = len(nums)
-    if count == 0: return 0
-    
-    i = 0
-    for j in range(1, count):
-        if nums[j] != nums[i]:
-            i += 1
-            nums[i] = nums[j]
-    return i + 1
+    def removeDuplicates(self, nums: List[int]) -> int:
+        count = len(nums)
+        if count == 0: return 0
+
+        i = 0
+        for j in range(1, count):
+            if nums[j] != nums[i]:
+                i += 1
+                nums[i] = nums[j]
+        return i + 1
   
