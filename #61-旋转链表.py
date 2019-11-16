@@ -43,3 +43,47 @@ def rotateRight(self, head: ListNode, k: int) -> ListNode:
     new_tail.next = None
 
     return new_head
+
+
+# 仿照旋转数组(#189)解法
+# 先整体反转原始链表,再旋转(1, k),最后再旋转(k+1, count)即可。
+def rotateRight(self, head: ListNode, k: int) -> ListNode:
+
+    def reverse_between(head, m, n):
+        if m == n: return head
+
+        new_node = ListNode(None)
+        new_node.next = head
+        prev = new_node
+
+        for _ in range(m-1):
+            prev = prev.next
+
+        curr = prev.next
+        reverse_node = None
+        for _ in range(n-m+1):
+            next = curr.next
+            curr.next = reverse_node
+            reverse_node = curr
+            curr = next
+
+        prev.next.next = curr
+        prev.next = reverse_node
+
+        return new_node.next
+
+    if not head: return
+    if not head.next: return head
+
+    tmp = head
+    count = 1
+    while tmp.next:
+        tmp = tmp.next
+        count += 1
+
+    k = k%count
+    if not k: return head
+    new_node = reverse_between(head, 1, count)
+    new_node = reverse_between(new_node, 1, k)
+    new_node = reverse_between(new_node,k+1, count)
+    return new_node
