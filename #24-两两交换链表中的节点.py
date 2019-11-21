@@ -33,11 +33,30 @@ def swapPairs(self, head: ListNode) -> ListNode:
     p = ListNode(None)
     cur, head, stack = head, p, []
     while cur and cur.next:
-        _,_ = stack.append(cur), stack.append(cur.next)
-        cur = cur.next.next
+        cur_next = cur.next
+        cur.next = None
+        stack.append(cur)
+        cur_next_next = cur_next.next
+        cur_next.next = None
+        stack.append(cur_next)
+        cur = cur_next_next
         p.next = stack.pop()
         p.next.next = stack.pop()
         p = p.next.next
+
+
+# 迭代解决
+# 思路:pre->a->b->b.next 变更为 pre—>b->a->b.next
+def swapPairs(self, head: ListNode) -> ListNode:
+    pre = self
+    pre.next = head
+    while pre.next and pre.next.next:
+        a = pre.next
+        b = a.next
+        pre.next, b.next, a.next = b, a, b.next
+
+        pre = a
+    return self.next
 
     p.next = cur if cur else None
     return head.next
