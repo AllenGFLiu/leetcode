@@ -1,28 +1,26 @@
-def test(x):
-    if x == 0: return True
-    if x < 0: return False
-    if x % 10 == 0: return False
+def test(strs):
+    count = len(strs)
+    if count == 0: return ''
+    if count == 1: return strs[0]
+    result = ''
+    tmp_count = 1
+    for index in range(len(strs[0])):
+        for num in range(1, count):
+            equal = False
+            if len(strs[num]) >= index+1:
+                tmp_count += 1
+                if strs[num][index] == strs[0][index]:
+                    equal = True
+                    continue
 
-    def inner_check(new_int):
-        count = 0
-        tmp_int = new_int
-        last = tmp_int % 10
-        if last == new_int:
-            return True
-        
-        while tmp_int // 10:
-            count += 1
-            tmp_int = tmp_int // 10
-        
-        if tmp_int != last:
-            return False
+        if index == 0 and not equal:
+            return result
 
-        tmp_int = (new_int - tmp_int*pow(10, count) - last) // 10
-        
-        return inner_check(tmp_int)
+        if equal and tmp_count == count:
+            result += strs[0][index]
 
-    return inner_check(x)
+    return result
 
 
 if __name__ == '__main__':
-    print(test(121))
+    print(test(["c","acc","ccc"]))
