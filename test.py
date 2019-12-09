@@ -1,26 +1,14 @@
-def test(strs):
-    count = len(strs)
-    if count == 0: return ''
-    if count == 1: return strs[0]
-    result = ''
-    tmp_count = 1
-    for index in range(len(strs[0])):
-        for num in range(1, count):
-            equal = False
-            if len(strs[num]) >= index+1:
-                tmp_count += 1
-                if strs[num][index] == strs[0][index]:
-                    equal = True
-                    continue
+def merge_sort(nums):
+    
+    def merge_array(array, p, q, r):
+        pass
 
-        if index == 0 and not equal:
-            return result
+    def inner_sort(array, p, r):
+        if p >= r: return
 
-        if equal and tmp_count == count:
-            result += strs[0][index]
+        q = (p+r) // 2
+        inner_sort(array, p, q)
+        inner_sort(array, q+1, r)
+        merge_array(array, )
 
-    return result
-
-
-if __name__ == '__main__':
-    print(test(["c","acc","ccc"]))
+    inner_sort(nums, 0, len(nums)-1)
