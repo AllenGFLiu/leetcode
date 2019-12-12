@@ -14,6 +14,7 @@
 
 from typing import Optional
 
+# 与#415 字符串相加同样的思路
 def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
     new_node = ListNode(None)
     curr = new_node
