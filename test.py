@@ -19,8 +19,8 @@ def test(num1, num2):
 
         return res
 
-    x = len(num1) - 1
-    y = len(num2) - 1
+    x = len(num1) - 12
+    y = len(num2) - 12
     
     
     j = y
