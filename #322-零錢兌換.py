@@ -14,8 +14,8 @@
 你可以认为每种硬币的数量是无限的。
 '''
 
-Solution1:遞歸解法
-這種遞歸屬於多路徑遞歸,人腦不可能人肉模擬完整的遞和歸過程,只能通過遞歸樹和假設子問題已經得到解決的方式來寫遞推公式
+# Solution1:遞歸解法
+# 這種遞歸屬於多路徑遞歸,人腦不可能人肉模擬完整的遞和歸過程,只能通過遞歸樹和假設子問題已經得到解決的方式來寫遞推公式
 def coinChange(coins, amount):
     def helper(value):
         if value == 0: return 0
@@ -30,7 +30,7 @@ def coinChange(coins, amount):
     return helper(amount)
 
 
-Solution2:加備忘錄的遞歸解法
+# Solution2:加備忘錄的遞歸解法
 def coinChange(coins, amount):
     def helper(value):
         if value in d: return d[value]
